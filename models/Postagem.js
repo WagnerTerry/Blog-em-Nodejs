@@ -16,7 +16,7 @@ const Postagem = new Schema({
     },
     conteudo: {
         type: String,
-        required: true
+        
     },
     categoria: {
         type: Schema.Types.ObjectId,
