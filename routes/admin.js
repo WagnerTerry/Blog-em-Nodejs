@@ -5,16 +5,18 @@ require("../models/Categoria")
 require("../models/Postagem")
 const Categoria = mongoose.model("categorias")
 const Postagem = mongoose.model("postagens")
+const {eAdmin}= require("../helpers/eAdmin")
+
 
 router.get('/', function(req,res){
     res.render("admin/index")
 })
 
-router.get('/posts', (req, res) => {
+router.get('/posts', eAdmin,(req, res) => {
     res.send("pagina de posts")
 })
 
-router.get("/categorias", (req,res) => {
+router.get("/categorias", eAdmin,(req,res) => {
     Categoria.find().sort({date: 'desc'}).then((categorias) => {
         res.render("admin/categorias", {categorias: categorias})
     }).catch((erro) => {
